@@ -180,6 +180,12 @@ namespace OriginalCircuit.AltiumSharp
                 case 14:
                     record = new SchRectangle();
                     break;
+                case 15:
+                    record = new SchSheetSymbol();
+                    break;
+                case 16:
+                    record = new SchSheetEntry();
+                    break;
                 case 17:
                     record = new SchPowerObject();
                     break;
