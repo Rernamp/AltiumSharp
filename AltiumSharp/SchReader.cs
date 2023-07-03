@@ -208,6 +208,12 @@ namespace OriginalCircuit.AltiumSharp
                 case 31:
                     record = new SchSheetHeader();
                     break;
+                case 32:
+                    record = new SchSheetName();
+                    break;
+                case 33:
+                    record = new SchSheetFileName();
+                    break;
                 case 34:
                     record = new SchDesignator();
                     break;
