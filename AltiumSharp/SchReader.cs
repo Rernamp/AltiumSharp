@@ -189,6 +189,9 @@ namespace OriginalCircuit.AltiumSharp
                 case 17:
                     record = new SchPowerObject();
                     break;
+                case 18:
+                    record = new SchPort();
+                    break;
                 case 22:
                     record = new SchPlaceNonGeneric();
                     break;
@@ -229,7 +232,7 @@ namespace OriginalCircuit.AltiumSharp
                     record = new SchParameter();
                     break;
                 case 43:
-                    record = new();
+                    record = new SchPlace();
                     break;
                 case 44:
                     record = new SchImplementationList();
