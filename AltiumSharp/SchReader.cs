@@ -198,6 +198,9 @@ namespace OriginalCircuit.AltiumSharp
                 case 25:
                     record = new SchNetLabel();
                     break;
+                case 26:
+                    record = new SchBus();
+                    break;
                 case 27:
                     record = new SchWire();
                     break;
@@ -224,6 +227,9 @@ namespace OriginalCircuit.AltiumSharp
                     break;
                 case 34:
                     record = new SchDesignator();
+                    break;
+                case 37:
+                    record = new SchBusEntry();
                     break;
                 case 39:
                     record = new SchTemplate();
