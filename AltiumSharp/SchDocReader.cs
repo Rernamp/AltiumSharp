@@ -1,4 +1,6 @@
-﻿namespace OriginalCircuit.AltiumSharp
+﻿using OriginalCircuit.AltiumSharp.Records;
+
+namespace OriginalCircuit.AltiumSharp
 {
     /// <summary>
     /// Schematic document reader.
@@ -15,6 +17,11 @@
 
             var embeddedImages = ReadStorageEmbeddedImages();
             SetEmbeddedImages(Data.Items, embeddedImages);
+
+            ReadAdditional();
+
+
+
         }
 
         /// <summary>
@@ -27,6 +34,22 @@
 
             using (var reader = Cf.GetStream("FileHeader").GetBinaryReader())
             {
+                var parameters = ReadBlock(reader, size => ReadParameters(reader, size));
+                var weight = parameters["WEIGHT"].AsIntOrDefault();
+
+                var primitives = ReadPrimitives(reader, null, null, null, null);
+                Data.Items.AddRange(primitives);
+
+                AssignOwners(primitives);
+            }
+
+            EndContext();
+        }
+
+        private void ReadAdditional() {
+            BeginContext("Additional");
+
+            using (var reader = Cf.GetStream("Additional").GetBinaryReader()) {
                 var parameters = ReadBlock(reader, size => ReadParameters(reader, size));
                 var weight = parameters["WEIGHT"].AsIntOrDefault();
 

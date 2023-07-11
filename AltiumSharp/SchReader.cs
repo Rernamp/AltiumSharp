@@ -255,6 +255,21 @@ namespace OriginalCircuit.AltiumSharp
                 case 48:
                     record = new SchImplementationParameters();
                     break;
+                case 215:
+                    record = new SchHarnessConnector();
+                    break;
+                case 216:
+                    record = new SchHarnessEntry();
+                    break;
+                case 217:
+                    record = new SchHarnessType();
+                    break;
+                case 218:
+                    record = new SchSignalHarness();
+                    break;
+                case 225:
+                    record = new SchBlanket();
+                    break;
                 default:
                     EmitWarning($"Record {recordType} not supported");
                     record = new SchPrimitive();
