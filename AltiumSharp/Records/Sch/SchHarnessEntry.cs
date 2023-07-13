@@ -6,12 +6,16 @@ using System.Xml.Linq;
 
 namespace OriginalCircuit.AltiumSharp.Records {
     public class SchHarnessEntry : SchPrimitive {
-
+        public enum Side : int {
+            Left = 0,
+            Right = 1,
+            Top = 2,
+            Bottom = 3
+        }
         public override int Record => 216;
         public string UniqueId { get; set; }
         public bool OwnerIndexAdditionalList { get; set; }
-        //TODO change int to enum
-        public int Side { get; set; }
+        public Side SideOfEntry { get; set; }
         public Color Color { get; set; }
         public Color AreaColor { get; set; }
         public int TextFontID { get; set; }
@@ -31,7 +35,7 @@ namespace OriginalCircuit.AltiumSharp.Records {
             base.ImportFromParameters(p);
             UniqueId = p["UniqueID"].AsStringOrDefault();
             OwnerIndexAdditionalList = p["OwnerIndexAdditionalList"].AsBool();
-            Side = p["Side"].AsIntOrDefault();
+            SideOfEntry = p["Side"].AsEnumOrDefault<Side>();
             Color = p["COLOR"].AsColorOrDefault();
             AreaColor = p["AREACOLOR"].AsColorOrDefault();
             TextFontID = p["TextFontID"].AsIntOrDefault();
